@@ -7,30 +7,27 @@ import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
+    @IBOutlet weak var loginBgImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     override func viewDidLoad() {
+        self.view.insertSubview(loginBgImageView, at: 0)
         super.viewDidLoad()
-        emailTextField.backgroundColor = UIColor.clear
-        emailTextField.tintColor = UIColor.white
-        emailTextField.textColor = UIColor.white
-        emailTextField.attributedPlaceholder = NSAttributedString(string: emailTextField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.6)])
-        let bottomLayerEmail = CALayer()
-        bottomLayerEmail.frame = CGRect(x: 0, y: 29, width: 1000, height: 0.6)
-        bottomLayerEmail.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
-        emailTextField.layer.addSublayer(bottomLayerEmail)
+        //emailTextField.backgroundColor = UIColor.clear
+        emailTextField.tintColor = UIColor.darkGray
+        emailTextField.textColor = UIColor.darkGray
+        emailTextField.attributedPlaceholder = NSAttributedString(string: emailTextField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+
         
-        passwordTextField.backgroundColor = UIColor.clear
-        passwordTextField.tintColor = UIColor.white
-        passwordTextField.textColor = UIColor.white
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordTextField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.6)])
-        let bottomLayerPassword = CALayer()
-        bottomLayerPassword.frame = CGRect(x: 0, y: 29, width: 1000, height: 0.6)
-        bottomLayerPassword.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
-        passwordTextField.layer.addSublayer(bottomLayerPassword)
+        //passwordTextField.backgroundColor = UIColor.clear
+        passwordTextField.tintColor = UIColor.darkGray
+        passwordTextField.textColor = UIColor.darkGray
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordTextField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+
         signInButton.isEnabled = false
         handleTextField()
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -40,8 +37,7 @@ class SignInViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if Auth.auth().currentUser != nil {
-            //self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
-            //이부분을 지웠더니 실행이된다. 자동로그인 구현인데, 무조건 로그인 되는 오류가 발생.
+            self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
         }
     }
     

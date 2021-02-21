@@ -8,6 +8,14 @@ pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
+pod 'Firebase/Messaging'
+pod 'SDWebImage'
+
+pod 'TBEmptyDataSet'
+pod 'TTGSnackbar'
+pod 'XLPagerTabStrip', '~> 8.0'
+pod 'SnapKit', '~> 4.0.0'
+pod 'ObjectMapper', '~> 3.3'
 
   # Pods for cau_study_ios
 
